@@ -1,6 +1,7 @@
 ﻿
 using Submerge.Engine.Model;
 using SubMerge.Engine;
+using SubMerge.Engine.Utils;
 using System.Text;
 
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -49,5 +50,5 @@ string BuildRecord(Entry e, bool reverse)
 
 async Task<IEnumerable<string>> ReadLines(string filePath)
 {
-    return (await File.ReadAllLinesAsync(filePath, Encoding.GetEncoding("ISO-8859-9"))).ToList();
+    return (await File.ReadAllLinesAsync(filePath, Constants.TrEncoding)).ToList();
 }

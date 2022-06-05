@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Submerge.Engine.Model;
+using SubMerge.Engine.Utils;
 
 namespace SubMerge.Engine
 {
@@ -12,7 +13,7 @@ namespace SubMerge.Engine
 
     public class ProcessService : IProcessService
     {
-        public Encoding TrEncoding => Encoding.GetEncoding("ISO-8859-9");
+        public Encoding TrEncoding => Constants.TrEncoding;
         public string DateSeperator => "-->";
         public string TimeFormat => @"hh\:mm\:ss\,fff";
 
