@@ -9,7 +9,7 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SubMerge.Engine\SubMerge.Engine.csproj" />
+    <ProjectReference Include="..\..\SubMerge.Engine\SubMerge.Engine.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
