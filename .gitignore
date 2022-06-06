@@ -272,7 +272,6 @@ __pycache__/
 # Azure Functions localsettings file
 local.settings.json
 
-SubMerge.Engine/obj/Debug/net6.0/
 
 bin/
 obj/
