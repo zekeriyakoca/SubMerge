@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubMerge.Engine", "SubMerge
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConsoleApp", "ConsoleApp", "{FCF17A0A-E70C-4603-84F8-B5A7E7B60CFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubMerge.Func", "SubMerge.Func\SubMerge.Func.csproj", "{9AA34C30-AA15-40EB-9B91-087F5692C088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubMerge.Func", "SubMerge.Func\SubMerge.Func.csproj", "{9AA34C30-AA15-40EB-9B91-087F5692C088}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Function", "Function", "{C4D3200D-C651-4507-B105-ADA3C1AADE29}"
 EndProject

@@ -18,24 +18,16 @@ using System.Net.Http;
 
 namespace SubMerge.Func
 {
-    public class ProcessSubtitles
+    public static class ProcessSubtitles
     {
-        private readonly IProcessService processService;
-        public ProcessSubtitles()
+        private static readonly IProcessService processService = new ProcessService();
+        static ProcessSubtitles()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            processService = new ProcessService();
-        }
-
-        [FunctionName("HealthCheck")]
-        public IActionResult HealthCheck(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req, ILogger log)
-        {
-            return new OkObjectResult("I've survived your bugs!");
         }
 
         [FunctionName("Process")]
-        public async Task<IActionResult> Process(
+        public static async Task<IActionResult> Process(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
@@ -62,7 +54,7 @@ namespace SubMerge.Func
             return new FileContentResult(bytes, "text/plain");
         }
 
-        private IEnumerable<string> ReadAllLines(IFormFile formFile)
+        private static IEnumerable<string> ReadAllLines(IFormFile formFile)
         {
             using Stream stream = formFile.OpenReadStream();
             using StreamReader reader = new(stream, Constants.TrEncoding);
@@ -75,7 +67,7 @@ namespace SubMerge.Func
             }
         }
 
-        private string BuildRecord(Entry e, bool reverse = false)
+        private static string BuildRecord(Entry e, bool reverse = false)
         {
             StringBuilder text = new StringBuilder();
             text.AppendLine(reverse ? e.Text2.Trim() : e.Text1.Trim());

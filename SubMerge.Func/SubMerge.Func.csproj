@@ -2,8 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
-	  <PublishReadyToRun>true</PublishReadyToRun>
-	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	  <PublishReadyToRun>false</PublishReadyToRun>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.15.0" />
