@@ -275,3 +275,4 @@ local.settings.json
 
 bin/
 obj/
+.vs/
