@@ -30,7 +30,7 @@ namespace SubMerge.Engine.UnitTests
             var lines = await File.ReadAllLinesAsync(fullPath, Constants.TrEncoding);
 
             //Act
-            var entries = await service.GetFirstEntries(lines.ToList());
+            var entries = await service.GetFirstEntriesAsync(lines.ToList());
 
             //Assert
             Assert.Equal(ExpectedLineCount, entries.Count());
@@ -45,10 +45,10 @@ namespace SubMerge.Engine.UnitTests
             var fullPathOfFile2 = rootFilePath + file2;
             var linesOfFile1 = await File.ReadAllLinesAsync(fullPathOfFile1, Constants.TrEncoding);
             var linesOfFile2 = await File.ReadAllLinesAsync(fullPathOfFile2, Constants.TrEncoding);
-            var entries = await service.GetFirstEntries(linesOfFile1.ToList());
+            var entries = await service.GetFirstEntriesAsync(linesOfFile1.ToList());
 
             //Act
-            entries = await service.FillSecondEntries(linesOfFile2, entries.ToList());
+            entries = await service.FillSecondEntriesAsync(linesOfFile2, entries.ToList());
             var countOfFullRecords = entries.Where(e => !String.IsNullOrWhiteSpace(e.Text1) && !String.IsNullOrWhiteSpace(e.Text2)).Count();
 
             //Assert

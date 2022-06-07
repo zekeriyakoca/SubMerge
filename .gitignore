@@ -276,3 +276,5 @@ local.settings.json
 bin/
 obj/
 .vs/
+
+API/SubMerge.API/appsettings.Development.json

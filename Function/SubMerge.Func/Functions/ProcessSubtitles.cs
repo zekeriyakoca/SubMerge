@@ -42,8 +42,8 @@ namespace SubMerge.Func
                 return new BadRequestObjectResult("Hey! I HAVE SAID TWO FILES!");
             }
 
-            var entries = await processService.GetFirstEntries(ReadAllLines(files[0]));
-            entries = await processService.FillSecondEntries(ReadAllLines(files[1]), entries.ToList());
+            var entries = await processService.GetFirstEntriesAsync(ReadAllLines(files[0]));
+            entries = await processService.FillSecondEntriesAsync(ReadAllLines(files[1]), entries.ToList());
             entries = processService.TryFixEntries(entries.ToList());
 
             log.LogInformation("Files has been processed successfully");
