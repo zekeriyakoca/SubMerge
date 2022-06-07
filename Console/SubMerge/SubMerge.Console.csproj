@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SubMerge.Engine\SubMerge.Engine.csproj" />
+    <ProjectReference Include="..\..\SubMerge.Engine\SubMerge.Engine.csproj" />
   </ItemGroup>
 
   <ItemGroup>
