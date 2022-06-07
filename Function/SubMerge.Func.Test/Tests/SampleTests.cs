@@ -11,7 +11,7 @@ namespace SubMerge.Func.Test
             var request = TestFactory.CreateHttpRequest();
             var logger = TestFactory.CreateLogger(LoggerTypes.Null);
 
-            var response = (OkObjectResult)HealthCheck.Run(request, logger);
+            var response = (OkObjectResult)HealthCheck.Run(request, logger); 
 
             Assert.Equal(response.Value, "I've survived your bugs!");
         }
