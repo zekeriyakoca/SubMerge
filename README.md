@@ -3,6 +3,24 @@ This app is to merge two subtitles in one form and serve csv file, json data in 
 
 Right now, we are at the first version without a UI
 
-Current version is only using Azure cloud services 
+3 different ways have been implemented as follows,
+
+## Console Applicaiton
+- Read files to be merged from a local path. Write output file to a file path
+
+## Azrue function
+- A function accepting two files to be merged and returns a merged file
+
+### API (Minimal API wiht .Net 6)
+##### (Basicly, this is api version of v2 which will be implemented as Azure Function)
+
+- Current version is only using Azure cloud services 
+- Accept blob names of the files stored on Azure Blog Storage
+- Process files 
+- Save merged file to Azure Blog Storage
+- Save JSON data of processed data to CosmosDB (Core API)
+
+### Integration Tests to be written
+### Unit Tests are written with a minimum covarage
 
 
