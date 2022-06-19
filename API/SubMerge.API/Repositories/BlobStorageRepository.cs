@@ -1,5 +1,4 @@
 ﻿using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
 
 namespace SubMerge.API.Repositories
 {
@@ -63,13 +62,20 @@ namespace SubMerge.API.Repositories
             {
                 return null;
             }
-            return response.Value.Content; 
+            return response.Value.Content;
         }
 
+        /// <summary>
+        /// Creating containers wiht a public access
+        /// since the files will be used directly form UI in version 2
+        /// </summary>
+        /// <param name="containerNames"></param>
+        /// <returns></returns>
         private async Task EnsureContainers(List<string> containerNames)
         {
+            // TODO : Remove public access along with version 3 and provide data through an endpoint wiht authorization/authentication
             containerNames.ForEach(containerName =>
-                serviceClient.GetBlobContainerClient(containerName).CreateIfNotExistsAsync());
+                serviceClient.GetBlobContainerClient(containerName).CreateIfNotExistsAsync(Azure.Storage.Blobs.Models.PublicAccessType.Blob));
         }
     }
 

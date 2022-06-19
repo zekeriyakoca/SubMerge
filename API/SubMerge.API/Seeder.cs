@@ -6,7 +6,7 @@ namespace SubMerge.API
     {
         public static Task Seed(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<IDataInitializer, BlobStorageRepository>();
+            services.AddTransient<IDataInitializer, BlobStorageRepository>();
 
             using var serviceProvider = services.BuildServiceProvider();
             serviceProvider.GetServices<IDataInitializer>().ToList().ForEach(initializer => initializer.Initialize().GetAwaiter().GetResult());

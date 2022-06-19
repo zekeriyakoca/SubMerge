@@ -23,7 +23,7 @@ builder.Services.AddSingleton<CosmosClient>((s) =>
 });
 
 builder.Services.AddTransient<SubMerge.Engine.IProcessService, SubMerge.Engine.ProcessService>();
-builder.Services.AddScoped<BlobStorageRepository>();
+builder.Services.AddScoped<IBlobStorageRepository, BlobStorageRepository>();
 builder.Services.AddScoped<IProcessService, ProcessService>();
 builder.Services.AddSingleton<ICosmosRepository, CosmosCommonRepository>();
 

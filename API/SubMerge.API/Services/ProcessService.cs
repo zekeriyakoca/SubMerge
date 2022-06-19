@@ -15,9 +15,9 @@ namespace SubMerge.API.Services
     {
         private readonly Engine.IProcessService processService;
         private readonly ICosmosRepository cosmosRepository;
-        private readonly BlobStorageRepository blobStorageRepository;
+        private readonly IBlobStorageRepository blobStorageRepository;
 
-        public ProcessService(Engine.IProcessService processService, ICosmosRepository cosmosRepository, BlobStorageRepository blobStorageRepository)
+        public ProcessService(Engine.IProcessService processService, ICosmosRepository cosmosRepository, IBlobStorageRepository blobStorageRepository)
         {
             this.processService = processService;
             this.cosmosRepository = cosmosRepository;
