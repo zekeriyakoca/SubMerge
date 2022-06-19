@@ -22,9 +22,9 @@ async Task<IEnumerable<Entry>> GetEntries()
 
     List<Entry> entries = new();
 
-    entries = (await service.GetFirstEntries(await ReadLines(file1))).ToList();
+    entries = (await service.GetFirstEntriesAsync(await ReadLines(file1))).ToList();
 
-    entries = (await service.FillSecondEntries(await ReadLines(file2), entries)).ToList();
+    entries = (await service.FillSecondEntriesAsync(await ReadLines(file2), entries)).ToList();
 
     entries = service.TryFixEntries(entries).ToList();
 

@@ -6,8 +6,8 @@ namespace SubMerge.Engine
 {
     public interface IProcessService
     {
-        Task<IEnumerable<Entry>> FillSecondEntries(IEnumerable<string> lines, List<Entry> entries);
-        Task<IEnumerable<Entry>> GetFirstEntries(IEnumerable<string> lines);
+        Task<IEnumerable<Entry>> FillSecondEntriesAsync(IEnumerable<string> lines, List<Entry> entries);
+        Task<IEnumerable<Entry>> GetFirstEntriesAsync(IEnumerable<string> lines);
         IEnumerable<Entry> TryFixEntries(List<Entry> result);
     }
 
@@ -36,7 +36,7 @@ namespace SubMerge.Engine
             return result.Where(r => !String.IsNullOrWhiteSpace(r.Text1) && !String.IsNullOrWhiteSpace(r.Text2)).ToList();
         }
 
-        public async Task<IEnumerable<Entry>> GetFirstEntries(IEnumerable<string> lines)
+        public async Task<IEnumerable<Entry>> GetFirstEntriesAsync(IEnumerable<string> lines)
         {
             Entry entry;
             TimeSpan timeStart = default, timeEnd = default;
@@ -80,7 +80,7 @@ namespace SubMerge.Engine
             return entries;
         }
 
-        public async Task<IEnumerable<Entry>> FillSecondEntries(IEnumerable<string> lines, List<Entry> entries)
+        public async Task<IEnumerable<Entry>> FillSecondEntriesAsync(IEnumerable<string> lines, List<Entry> entries)
         {
             Entry entry;
             TimeSpan timeStart = default, timeEnd = default;
