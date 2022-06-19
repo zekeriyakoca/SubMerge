@@ -6,6 +6,21 @@
     "storage1": {
       "type": "storage.emulator",
       "connectionId": "AzureWebJobsStorage"
+    },
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "storage2": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/genstorageaccount3116",
+      "type": "storage.azure",
+      "connectionId": "AzureQueueConnectionString"
+    },
+    "storage3": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/genstorageaccount3116",
+      "type": "storage.azure",
+      "connectionId": "AzureQueueConnectionString"
     }
   }
 }
