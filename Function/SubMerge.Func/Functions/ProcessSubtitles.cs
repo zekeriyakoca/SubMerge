@@ -38,8 +38,8 @@ namespace SubMerge.Func
             var files = req.Form.Files;
             if (files?.Count != 2)
             {
-                log.LogWarning("Reqeust received with {0} files", files == default ? 0 : files.Count);
-                return new BadRequestObjectResult("Hey! I HAVE SAID TWO FILES!");
+                log.LogWarning("Reqeust received {0} files", files == default ? 0 : files.Count);
+                return new BadRequestObjectResult("Hey! I SAID TWO FILES!");
             }
 
             var entries = await processService.GetFirstEntriesAsync(ReadAllLines(files[0]));
@@ -50,7 +50,7 @@ namespace SubMerge.Func
             var fileContent = entries.Select(e => BuildRecord(e, reverse));
             var bytes = Constants.TrEncoding.GetBytes(String.Join(String.Empty, fileContent));
 
-            log.LogInformation("Merged file returns. File Size : {0} KB", (bytes.Count() / 1024));
+            log.LogInformation("Merged file returns. File Size: {0} KB", (bytes.Count() / 1024));
             return new FileContentResult(bytes, "text/plain");
         }
 

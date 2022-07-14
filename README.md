@@ -23,4 +23,12 @@ Right now, we are at the first version without a UI
 ### Integration Tests to be written
 ### Unit Tests are written with a minimum covarage
 
+##To Run the Application
+
+### SubMerge.Func
+- You will need following settings on your configuration (local.settings.json can be used on local runs)
+"CosmosDbConnectionString": "*************",
+"AzureStorageConnectionString": "**************"
+  
+
 
