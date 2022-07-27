@@ -20,41 +20,45 @@ namespace SubMerge.Func.GeneralPurpose
         }
 
         [FunctionName("CheckAppointment")]
-        public async Task Run([TimerTrigger("0 */50 * * * *", RunOnStartup = true)] TimerInfo myTimer,
+        public async Task Run([TimerTrigger("0 */10 * * * *", RunOnStartup = true)] TimerInfo myTimer,
             [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] IAsyncCollector<SendGridMessage> messageCollector,
             ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+            var cleanText = "";
+            try
+            {
+                var response = await client.GetAsync(BuildUrl());
+                response.EnsureSuccessStatusCode();
+                var result = await response.Content.ReadAsStringAsync();
+                cleanText = result.Replace(")]}',\n", String.Empty);
+            }
+            catch (Exception ex)
+            {
+                log.LogError($"Error occured while calling IND Service");
+                throw;
+            }
 
-            var response = await client.GetAsync(BuildUrl());
-            response.EnsureSuccessStatusCode();
-            var result = await response.Content.ReadAsStringAsync();
-            var cleanText = result.Replace(")]}',\n", String.Empty);
             if (String.IsNullOrWhiteSpace(cleanText))
             {
+                log.LogError($"Response of IND Service is empty!");
                 throw new Exception("Bad formed response!");
             }
+
             var dto = JsonConvert.DeserializeObject<ResponseDto>(cleanText);
-            var foundAppointment = FindClosestAppointmentWithin(dto?.Data, 100);
+            var maxDays = Environment.GetEnvironmentVariable("MaxDays");
+            if (String.IsNullOrWhiteSpace(maxDays))
+                maxDays = "45";
+            var foundAppointment = FindClosestAppointmentWithin(dto?.Data, int.Parse(maxDays));
             if (foundAppointment == default)
             {
+                log.LogInformation($"No appointment found!");
                 return;
             }
+            log.LogInformation($"Appointment found! {foundAppointment.Date.ToShortDateString()}");
             var message = GenerateMessage(foundAppointment);
             await messageCollector.AddAsync(message);
-
-        }
-
-        private SendGridMessage GenerateMessage(AppointmentDto foundAppointment)
-        {
-            var mailBody = GenerateMail(foundAppointment);
-
-            var message = new SendGridMessage();
-            message.AddTo("zekeriyakocairi@gmail.com");
-            message.AddContent("text/html", mailBody);
-            message.SetFrom(new EmailAddress("zekeriyakocairi1@gmail.com"));
-            message.SetSubject("New Appointment Alert!");
-            return message;
+            log.LogInformation($"Notification sent! {foundAppointment.Date.ToShortDateString()}");
 
         }
 
@@ -65,16 +69,32 @@ namespace SubMerge.Func.GeneralPurpose
 
 
         }
+
         private AppointmentDto FindClosestAppointmentWithin(IEnumerable<AppointmentDto> appointments, int maxDays = 30)
         {
             if (appointments == default && appointments.Count() == 0)
                 return default;
             return appointments.OrderBy(a => a.Date).FirstOrDefault(a => a.Date <= DateTime.Now.AddDays(maxDays));
         }
-        private string GenerateMail(AppointmentDto appointment)
+
+        private SendGridMessage GenerateMessage(AppointmentDto foundAppointment)
         {
-            return $"Appointment found at {appointment.Date}";
+            var mailBody = GenerateMailBody(foundAppointment);
+
+            var message = new SendGridMessage();
+            message.AddTo("zekeriyakocairi@gmail.com");
+            message.AddContent("text/html", mailBody);
+            message.SetFrom(new EmailAddress("zekeriyakocairi1@gmail.com"));
+            message.SetSubject("New Appointment Alert!");
+            return message;
+
         }
+
+        private string GenerateMailBody(AppointmentDto appointment)
+        {
+            return $"Appointment found at {appointment.Date.ToString("dd/MMM/yyyy")} (after {appointment.Date.Subtract(DateTime.Now).Days} days)";
+        }
+
         private class ResponseDto
         {
             [JsonProperty("status")]

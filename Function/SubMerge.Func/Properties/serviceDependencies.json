@@ -4,10 +4,6 @@
       "type": "appInsights",
       "connectionId": "APPINSIGHTS_CONNECTIONSTRING"
     },
-    "storage1": {
-      "type": "storage",
-      "connectionId": "AzureWebJobsStorage"
-    },
     "secrets1": {
       "type": "secrets"
     },
@@ -18,6 +14,10 @@
     "storage3": {
       "type": "storage",
       "connectionId": "AzureQueueConnectionString"
+    },
+    "storage1": {
+      "type": "storage",
+      "connectionId": "AzureWebJobsStorage"
     }
   }
 }
