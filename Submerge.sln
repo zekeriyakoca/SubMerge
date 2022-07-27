@@ -15,17 +15,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubMerge.Engine", "SubMerge
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{7B29BA61-266A-4CEC-9FFF-E77E9027B5AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubMerge.Engine.UnitTests", "SubMerge.Engine.UnitTests\SubMerge.Engine.UnitTests.csproj", "{B9469296-D36A-41EC-ABFA-1CBBF17D6A40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubMerge.Engine.UnitTests", "SubMerge.Engine.UnitTests\SubMerge.Engine.UnitTests.csproj", "{B9469296-D36A-41EC-ABFA-1CBBF17D6A40}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubMerge.Console", "Console\SubMerge\SubMerge.Console.csproj", "{315F0EBF-5BC8-4700-96AA-F5719A1542BC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{9D6981F8-911D-4E81-965C-E7D3293B7045}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubMerge.API", "API\SubMerge.API\SubMerge.API.csproj", "{1150418B-6442-4F2B-9428-D32C82B2A04E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubMerge.API", "API\SubMerge.API\SubMerge.API.csproj", "{1150418B-6442-4F2B-9428-D32C82B2A04E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubMerge.API.UnitTests", "API\SubMerge.API.UnitTests\SubMerge.API.UnitTests.csproj", "{D02E956A-9F11-42E7-9EE9-879EDCE54800}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubMerge.API.UnitTests", "API\SubMerge.API.UnitTests\SubMerge.API.UnitTests.csproj", "{D02E956A-9F11-42E7-9EE9-879EDCE54800}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubMerge.Core", "SubMerge.Core\SubMerge.Core.csproj", "{A7B10023-8515-49D4-A058-079D6677684D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubMerge.Core", "SubMerge.Core\SubMerge.Core.csproj", "{A7B10023-8515-49D4-A058-079D6677684D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A82EED3B-96ED-4DE8-A904-961C6D1419ED}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
